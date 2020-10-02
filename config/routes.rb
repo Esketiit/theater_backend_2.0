@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # sessions route for authentications and cookie creation
+  resources :sessions, only: [:create]
+  # registrations route that allows users to create accounts
+  resources :registrations, only: [:create]
   root to: "static#home"
 end
