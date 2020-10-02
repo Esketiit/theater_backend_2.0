@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         # now that we found the user in the database, try to run the authenticate method on the password 
         # sent from the frontend
         # if both of these steps work, user will have ref a User object, otherwise, a falsey value (I think)
-        user = User.find_by(username: params["user"]["username"]).try(:autheticate, params["user"]["username"])
+        user = User.find_by(username: params["user"]["username"]).try(:authenticate, params["user"]["password"])
 
         # if a user has been found and authenticated, store the id of that user
         # in the session cookie, then send send back the user's data
@@ -15,12 +15,13 @@ class SessionsController < ApplicationController
         if user
             session[:user_id] = user.id
             render json: {
-                status: :created,
+                status: "created",
                 logged_in: true,
                 user: user
             }
         else
             render json: {status: 401}
         end
+        # byebug
     end
 end
