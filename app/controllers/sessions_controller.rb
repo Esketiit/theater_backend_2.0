@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+    # app/controllers/concerns/current_user_concern.rb
+    include CurrentUserConcern
+
     def create
         # frontend makes a post request to create new session
         # The frontend will send a user object
@@ -15,7 +18,7 @@ class SessionsController < ApplicationController
         if user
             session[:user_id] = user.id
             render json: {
-                status: "created",
+                status: :created,
                 logged_in: true,
                 user: user
             }
@@ -23,5 +26,26 @@ class SessionsController < ApplicationController
             render json: {status: 401}
         end
         # byebug
+    end
+
+    def logged_in
+        # checks to see if a user is already logged in
+        # if logged in, send back user data
+
+        if @current_user
+            render json: {
+                logged_in: true,
+                user: @current_user
+            }
+        else
+            render json: {
+                logged_in: false
+            }
+        end
+    end
+
+    def logout
+        reset_session
+        render json: { status: 200, logged_out: true}
     end
 end
