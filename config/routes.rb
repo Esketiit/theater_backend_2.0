@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :room_playlists
+  resources :comments
+  resources :rooms
+  resources :videos
   # sessions route for authentications and cookie creation
   resources :sessions, only: [:create]
   # registrations route that allows users to create accounts
