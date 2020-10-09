@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :room_playlists
-  resources :comments
+  resources :room_playlists, only: [:create, :destroy]
+  resources :playlists
+  resources :comments, only: [:create, :destroy]
   resources :rooms
   resources :videos
   # sessions route for authentications and cookie creation

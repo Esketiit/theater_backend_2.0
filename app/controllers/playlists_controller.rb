@@ -1,4 +1,4 @@
-class PlaylistController < ApplicationController
+class PlaylistsController < ApplicationController
     def index
         playlists = Playlist.all.map {|playlist| {
             id: playlist.id, 
