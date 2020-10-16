@@ -22,8 +22,12 @@ class SessionsController < ApplicationController
                 logged_in: true,
                 user: user
             }
+            # byebug
         else
-            render json: {status: 401}
+            render json: {
+                status: 401,
+                logged_in: false
+            }
         end
         # byebug
     end

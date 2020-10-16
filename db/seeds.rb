@@ -3,9 +3,9 @@ Playlist.delete_all
 Video.delete_all
 Room.delete_all
 
-# u1 = User.create(username:"Melusi", password: "seige", password_confirmation: "seige", email: "r6seiger@gmail.com")
-# u2 = User.create(username:"Matt", password: "corn", password_confirmation: "corn")
-# u3 = User.create(username:"Krinkles", password: "madness", password_confirmation: "madness")
+u1 = User.create(username:"Melusi", password: "seige", password_confirmation: "seige", email: "r6seiger@gmail.com")
+u2 = User.create(username:"Matt", password: "corn", password_confirmation: "corn")
+u3 = User.create(username:"Krinkles", password: "madness", password_confirmation: "madness")
 
 # r1 = Room.create(name:"Listening Lounge", description: "Listen To Some Tunes")
 # r2 = Room.create(name:"Humor Hall", description: "Laugh out loud")
