@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   # checks to see if user is logged in
   get :logged_in, to: "sessions#logged_in"
   root to: "static#home"
+
+  # actioncable routes
+  resources :messages, only: [:create]
+  mount ActionCable.server => '/cable'
 end

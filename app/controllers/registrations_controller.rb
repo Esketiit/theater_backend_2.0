@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
         user = User.create!(
             username: params['user']['username'],
             password: params['user']['password'],
-            password_confirmation: params['user']['password']
+            password_confirmation: params['user']['password_confirmation']
         )
 
         # if user is created, create new session
@@ -17,7 +17,7 @@ class RegistrationsController < ApplicationController
             }
         else
             # status code 500 = internal server error
-            render json: {status: 500}
+            render json: {errors: user.errors.full_messages}
         end
     end
 end
