@@ -21,7 +21,9 @@ class RoomsController < ApplicationController
         # byebug
         room = Room.new(room_params)
         if room.save
-            render json: room, except: [:created_at, :updated_at]
+            # render json: room, except: [:created_at, :updated_at]
+            ActionCable.server.broadcast 'rooms_channel', room
+            head :ok
         else
             render json: room.errors.full_messages, except: [:created_at, :updated_at]
         end
