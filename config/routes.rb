@@ -15,6 +15,5 @@ Rails.application.routes.draw do
   root to: "static#home"
 
   # actioncable routes
-  resources :comments, only: [:create]
   mount ActionCable.server => '/cable'
 end

@@ -1,5 +1,6 @@
 class RoomPlaylistsController < ApplicationController
     def create
+        byebug
         rp = RoomPlaylist.new(room_playlist_params)
         if rp.save
             render json: rp

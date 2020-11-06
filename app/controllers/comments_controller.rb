@@ -1,7 +1,9 @@
-class CommentsController < ApplicationController]def create
+class CommentsController < ApplicationController
+    
+    def create
     # byebug
     comment = Comment.new(comment_params)
-
+    room = Room.find(message_params[:conversation_id])
     if comment.save
         # render json: {
         #         id: comment.id,
