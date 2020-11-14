@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
     
     def create
-    # byebug
     comment = Comment.new(comment_params)
-    room = Room.find(message_params[:conversation_id])
+    room = Room.find(comment_params[:room_id])
+    # byebug
     if comment.save
         # render json: {
         #         id: comment.id,
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
         #         content: comment.content
         #     }, except: [:created_at, :updated_at]
 
-        # we don't need to render json because we'll be using channels
+        # we don't need to render json because we'll be using channels(?)
         CommentsChannel.broadcast_to room, comment
         head :ok
     else
